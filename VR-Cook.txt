@@ -1,0 +1,2 @@
+Description:
+	The player will be set into a kitchen environment and will receive orders periodically. He will consult the cookbook in order to figure out how to prepare these meals. Various kitchenware in the vicinity will be used in unique ways and combinations as the meals are being prepared. The meals must be cooked properly and in a timely fashion to score. Failing both will incur a penalty. A timer will be set to determine the stage of the end of the game.
