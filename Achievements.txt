@@ -1,0 +1,8 @@
+Achievements for Capstone
+1. Scale (100pts)
+2. Lighting (100pts)
+3. Locomotion (100pts)
+4. Video Player (200pts)
+5. Diegetic UI (250pts)
+6. 3D Modeling (250pts)
+7. Compute Shader (500pts)
