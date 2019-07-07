@@ -17,6 +17,30 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_default : Valve.VR.SteamVR_ActionSet
     {
         
+        public virtual SteamVR_Action_Boolean InteractUI
+        {
+            get
+            {
+                return SteamVR_Actions.default_InteractUI;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Teleport
+        {
+            get
+            {
+                return SteamVR_Actions.default_Teleport;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean GrabPinch
+        {
+            get
+            {
+                return SteamVR_Actions.default_GrabPinch;
+            }
+        }
+        
         public virtual SteamVR_Action_Boolean GrabGrip
         {
             get
@@ -25,11 +49,43 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Vector2 Locomotion
+        public virtual SteamVR_Action_Pose Pose
         {
             get
             {
-                return SteamVR_Actions.default_Locomotion;
+                return SteamVR_Actions.default_Pose;
+            }
+        }
+        
+        public virtual SteamVR_Action_Skeleton SkeletonLeftHand
+        {
+            get
+            {
+                return SteamVR_Actions.default_SkeletonLeftHand;
+            }
+        }
+        
+        public virtual SteamVR_Action_Skeleton SkeletonRightHand
+        {
+            get
+            {
+                return SteamVR_Actions.default_SkeletonRightHand;
+            }
+        }
+        
+        public virtual SteamVR_Action_Single Squeeze
+        {
+            get
+            {
+                return SteamVR_Actions.default_Squeeze;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean HeadsetOnHead
+        {
+            get
+            {
+                return SteamVR_Actions.default_HeadsetOnHead;
             }
         }
         
