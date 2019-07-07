@@ -89,6 +89,22 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Vector2 Locomotion
+        {
+            get
+            {
+                return SteamVR_Actions.default_Locomotion;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 Camera
+        {
+            get
+            {
+                return SteamVR_Actions.default_Camera;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get
