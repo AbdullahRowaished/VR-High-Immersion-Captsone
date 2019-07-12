@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GamePools : MonoBehaviour {
-    public List<GameObject> dirtpiles, pumpkins, eggplants, tomatoes;
-    private bool pooled;
+    public static List<GameObject> dirtpiles, pumpkins, eggplants, tomatoes, corn;
+    private static bool pooled;
 
     private void Start()
     {
@@ -12,6 +12,7 @@ public class GamePools : MonoBehaviour {
         pumpkins = new List<GameObject>(GameObject.FindGameObjectsWithTag("Pumpkin"));
         eggplants = new List<GameObject>(GameObject.FindGameObjectsWithTag("Eggplant"));
         tomatoes = new List<GameObject>(GameObject.FindGameObjectsWithTag("Tomato"));
+        corn = new List<GameObject>(GameObject.FindGameObjectsWithTag("Corn"));
 
         foreach (GameObject dirt in dirtpiles)
         {
@@ -35,12 +36,17 @@ public class GamePools : MonoBehaviour {
 
             tomato.SetActive(false);
         }
+
+        foreach (GameObject cob in corn)
+        {
+            cob.SetActive(false);
+        }
     }
 
-    public GameObject PoolObject(Vector3 coordinates, string tag)
+    public static GameObject PoolObject(Vector3 coordinates, string tag)
     {
         List<GameObject> pool;
-        pool = null;
+        pool = dirtpiles;
         switch (tag)
         {
             case "Dirt":
@@ -55,11 +61,14 @@ public class GamePools : MonoBehaviour {
             case "Tomato":
                 pool = tomatoes;
                 break;
+            case "Corn":
+                pool = corn;
+                break;
         }
-
+        pool = dirtpiles;
         pooled = false;
 
-        foreach (GameObject item in pool)
+        foreach (GameObject item in dirtpiles)
         {
             if (!item.activeSelf)
             {
