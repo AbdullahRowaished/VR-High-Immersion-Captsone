@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GamePools : MonoBehaviour {
-    public static List<GameObject> dirtpiles, pumpkins, eggplants, tomatoes, corn;
-    private static bool pooled;
+    public List<GameObject> dirtpiles, pumpkins, eggplants, tomatoes, corn;
+    private bool pooled;
 
     private void Start()
     {
@@ -14,39 +14,28 @@ public class GamePools : MonoBehaviour {
         tomatoes = new List<GameObject>(GameObject.FindGameObjectsWithTag("Tomato"));
         corn = new List<GameObject>(GameObject.FindGameObjectsWithTag("Corn"));
 
-        foreach (GameObject dirt in dirtpiles)
+        for (int i = 0; i < 16; i++)
         {
-            dirt.SetActive(false);
-        }
+            dirtpiles[i].SetActive(false);
+            pumpkins[i].SetActive(false);
+            corn[i].SetActive(false);
+            tomatoes[i].SetActive(false);
+            eggplants[i].SetActive(false);
 
-        foreach (GameObject pumpkin in pumpkins)
-        {
-
-            pumpkin.SetActive(false);
-        }
-
-        foreach (GameObject eggplant in eggplants)
-        {
-
-            eggplant.SetActive(false);
-        }
-
-        foreach (GameObject tomato in tomatoes)
-        {
-
-            tomato.SetActive(false);
-        }
-
-        foreach (GameObject cob in corn)
-        {
-            cob.SetActive(false);
+            int c = i + 1;
+            dirtpiles[i].name = "Dirt " + c;
+            pumpkins[i].name = "Pumpkin " + c;
+            corn[i].name = "Corn " + c;
+            tomatoes[i].name = "Tomato " + c;
+            eggplants[i].name = "Eggplant " + c;
         }
     }
 
-    public static GameObject PoolObject(Vector3 coordinates, string tag)
+    public GameObject PoolObject(Vector3 coordinates, string tag)
     {
         List<GameObject> pool;
-        pool = dirtpiles;
+        GameObject pooledObject = null;
+        pool = null;
         switch (tag)
         {
             case "Dirt":
@@ -65,29 +54,32 @@ public class GamePools : MonoBehaviour {
                 pool = corn;
                 break;
         }
-        pool = dirtpiles;
+
         pooled = false;
 
-        foreach (GameObject item in dirtpiles)
+        foreach (GameObject item in pool)
         {
             if (!item.activeSelf)
             {
                 item.transform.SetPositionAndRotation(coordinates, item.transform.rotation);
                 item.SetActive(true);
                 pooled = true;
-                return item;
+                pooledObject = item;
+                break;
             }
         }
 
         if (!pooled)
         {
-            pool.Add(Instantiate(pool[0]));
+            pool.Add(Instantiate(pool[pool.Count - 1]));
             GameObject item = pool[pool.Count - 1];
+            item.name = tag + " " + pool.Count;
             item.transform.SetPositionAndRotation(coordinates, item.transform.rotation);
+            item.transform.SetParent(GameObject.Find(tag).transform);
             item.SetActive(true);
             return item;
         }
 
-        return null;
+        return pooledObject;
     }
 }
