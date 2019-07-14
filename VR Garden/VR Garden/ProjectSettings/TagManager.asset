@@ -9,6 +9,7 @@ TagManager:
   - Eggplant
   - Pumpkin
   - Tomato
+  - Terrain
   layers:
   - Default
   - TransparentFX
