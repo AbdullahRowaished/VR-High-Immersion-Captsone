@@ -1,9 +1,9 @@
 Achievements for Capstone
-1. Scale (100pts)
-2. Lighting (100pts)
-3. Locomotion (100pts)
-4. Animation (100pts)
-5. Physics (100pts)
-6. Diegetic UI (250pts)
-7. 3D Modeling (250pts)
-8. Compute Shader (500pts)
+1. Scale (100pts) [kinda]
+2. Lighting (100pts) [not yet]
+3. Locomotion (100pts) [yes]
+4. Animation (100pts) [not yet]
+5. Physics (100pts) [not yet]
+6. Diegetic UI (250pts) [not yet]
+7. 3D Modeling (250pts) [not yet]
+8. Compute Shader (500pts) [not yet]
