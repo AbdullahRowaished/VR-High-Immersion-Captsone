@@ -10,6 +10,8 @@ TagManager:
   - Pumpkin
   - Tomato
   - Terrain
+  - Knob
+  - Door
   layers:
   - Default
   - TransparentFX
