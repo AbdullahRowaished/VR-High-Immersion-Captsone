@@ -6,6 +6,7 @@ using Valve.VR;
 public class Locomotion : MonoBehaviour
 {
     private GameObject player;
+    private CharacterController charControl;
     private Transform vrcTransform;
     private bool locomotive, eyeing;
     private Vector2 Laxis, Raxis;
@@ -15,6 +16,7 @@ public class Locomotion : MonoBehaviour
     {
         player = GameObject.Find("Player");
         vrcTransform = GameObject.Find("VRCamera").transform;
+        charControl = player.GetComponent<CharacterController>();
         locomotive = false;
         eyeing = false;
     }
@@ -30,6 +32,11 @@ public class Locomotion : MonoBehaviour
         if (eyeing)
         {
             RotateCamera();
+        }
+
+        if(!charControl.isGrounded)
+        {
+            charControl.Move(Vector3.down * 9.8f);
         }
     }
 
@@ -51,7 +58,11 @@ public class Locomotion : MonoBehaviour
     {
         t = Time.deltaTime;
         speed = 10;
-        player.transform.Translate(t*speed*xLS, 0, t*speed*yLS);
+
+        Vector3 euler = new Vector3(0, vrcTransform.eulerAngles.y, 0);
+        Quaternion quat = Quaternion.Euler(euler);
+
+        charControl.Move(quat * (new Vector3(xLS, 0, yLS) * t * speed));
     }
 
     private void RotateCamera()
