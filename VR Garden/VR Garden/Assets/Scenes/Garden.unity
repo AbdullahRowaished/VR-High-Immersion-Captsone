@@ -2148,6 +2148,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 144751074}
+  - component: {fileID: 144751077}
+  - component: {fileID: 144751076}
+  - component: {fileID: 144751075}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -2168,6 +2171,40 @@ Transform:
   m_Father: {fileID: 1546621240}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144751075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 144751073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d77fa98e33e5a4cb2905c7cc5ecae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreboard: {fileID: 0}
+--- !u!114 &144751076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 144751073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f6fddd8212dbd4b97132c45badaea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &144751077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 144751073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a2e3eecd30ac140be456a74ab60bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &144771922
 Prefab:
   m_ObjectHideFlags: 0
