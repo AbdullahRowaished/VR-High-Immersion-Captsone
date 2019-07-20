@@ -10,15 +10,15 @@ public class Scoring : MonoBehaviour {
         totalScore = 0;
     }
 
-    public int Score(Quality quality)
+    public int Score(int score, Quality quality)
     {
         switch (quality)
         {
             case Quality.LOW:
-                totalScore += 10;
+                totalScore += score;
                 break;
             case Quality.HIGH:
-                totalScore += 50;
+                totalScore += 5 * score;
                 break;
         }
 
