@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpadeInteraction : MonoBehaviour {
-    public GamePools gp;
+    private GameLogic gl;
     private GameObject tip;
     private int shovelcount; //must shovel several times until a dirtpile shows up
 
     private void Start()
     {
+        gl = GameObject.Find("GameLogic").GetComponent<GameLogic>();
         tip = GameObject.Find("SpadeTip");
         shovelcount = 0;
     }
@@ -19,7 +20,7 @@ public class SpadeInteraction : MonoBehaviour {
         {
             if (shovelcount == 10)
             {
-                gp.PoolObject(tip.transform.position, "Dirt");
+                gl.AddDirt(tip.transform.position);
                 shovelcount = 0;
             }
             else

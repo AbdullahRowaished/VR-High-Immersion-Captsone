@@ -38,6 +38,7 @@ public class Locomotion : MonoBehaviour
         {
             charControl.Move(Vector3.down * 9.8f);
         }
+        HeightAdjustment();
     }
 
     private void GetLeftStickValues()
@@ -57,7 +58,7 @@ public class Locomotion : MonoBehaviour
     private void MovePlayer()
     {
         t = Time.deltaTime;
-        speed = 10;
+        speed = 5;
 
         Vector3 euler = new Vector3(0, vrcTransform.eulerAngles.y, 0);
         Quaternion quat = Quaternion.Euler(euler);
@@ -70,5 +71,15 @@ public class Locomotion : MonoBehaviour
         t = Time.deltaTime;
         speed = 100;
         player.transform.Rotate(0, xRS * t * speed, 0);
+    }
+
+    private void HeightAdjustment()
+    {
+        CharacterController charControl = player.GetComponent<CharacterController>();
+        charControl.height = Vector3.Distance(vrcTransform.position, player.transform.position);
+        Vector3 newCenter = Vector3.zero;
+        newCenter.y = (charControl.height / 2);
+        newCenter.y += charControl.skinWidth;
+        charControl.center = newCenter;
     }
 }

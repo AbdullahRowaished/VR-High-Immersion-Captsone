@@ -13,6 +13,11 @@ TagManager:
   - Knob
   - Door
   - WaterCan
+  - EggplantPlant
+  - CornPlant
+  - TomatoPlant
+  - PumpkinPlant
+  - Water
   layers:
   - Default
   - TransparentFX

@@ -9,10 +9,10 @@ public class GamePools : MonoBehaviour {
     private void Start()
     {
         dirtpiles = new List<GameObject>(GameObject.FindGameObjectsWithTag("Dirt"));
-        pumpkins = new List<GameObject>(GameObject.FindGameObjectsWithTag("Pumpkin"));
-        eggplants = new List<GameObject>(GameObject.FindGameObjectsWithTag("Eggplant"));
-        tomatoes = new List<GameObject>(GameObject.FindGameObjectsWithTag("Tomato"));
-        corn = new List<GameObject>(GameObject.FindGameObjectsWithTag("Corn"));
+        pumpkins = new List<GameObject>(GameObject.FindGameObjectsWithTag("PumpkinPlant"));
+        eggplants = new List<GameObject>(GameObject.FindGameObjectsWithTag("EggplantPlant"));
+        tomatoes = new List<GameObject>(GameObject.FindGameObjectsWithTag("TomatoPlant"));
+        corn = new List<GameObject>(GameObject.FindGameObjectsWithTag("CornPlant"));
 
         for (int i = 0; i < 16; i++)
         {
@@ -41,16 +41,16 @@ public class GamePools : MonoBehaviour {
             case "Dirt":
                 pool = dirtpiles;
                 break;
-            case "Pumpkin":
+            case "PumpkinPlant":
                 pool = pumpkins;
                 break;
-            case "Eggplant":
+            case "EggplantPlant":
                 pool = eggplants;
                 break;
-            case "Tomato":
+            case "TomatoPlant":
                 pool = tomatoes;
                 break;
-            case "Corn":
+            case "CornPlant":
                 pool = corn;
                 break;
         }

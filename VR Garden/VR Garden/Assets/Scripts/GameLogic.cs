@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameLogic : MonoBehaviour {
-    public Scoring scoreboard;
-    public GamePools gamePools;
-    
-
+    private Scoring scoreboard;
+    private GamePools gamePools;
     private List<GameObject> produceCollected;
     private int dirtPileCount;
 
@@ -14,6 +12,13 @@ public class GameLogic : MonoBehaviour {
     {
         produceCollected = new List<GameObject>(24);
         dirtPileCount = 30;
+        scoreboard = GetComponent<Scoring>();
+        gamePools = GameObject.Find("GamePools").GetComponent<GamePools>();
+    }
+
+    public void AddDirt(Vector3 pos)
+    {
+        gamePools.PoolObject(pos, "Dirt");
     }
 
     private void GrowCrops(Season season)
