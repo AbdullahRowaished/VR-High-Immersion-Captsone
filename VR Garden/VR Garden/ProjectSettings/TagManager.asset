@@ -12,6 +12,7 @@ TagManager:
   - Terrain
   - Knob
   - Door
+  - WaterCan
   layers:
   - Default
   - TransparentFX

@@ -47959,7 +47959,7 @@ GameObject:
   - component: {fileID: 1130011996}
   m_Layer: 0
   m_Name: Water Particles
-  m_TagString: Untagged
+  m_TagString: WaterCan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48094,7 +48094,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1139805664
+  randomSeed: -1623814416
   InitialModule:
     serializedVersion: 3
     enabled: 1
