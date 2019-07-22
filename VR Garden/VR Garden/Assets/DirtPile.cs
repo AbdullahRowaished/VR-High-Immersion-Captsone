@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DirtPile : MonoBehaviour {
-    private bool used = false;
-    GameObject plant = null;
-    private Produce produce;
+    public bool used = false;
+    public GameObject seed = null;
+    public Produce produce;
 
     private void OnTriggerStay(Collider other)
     {
@@ -13,8 +13,11 @@ public class DirtPile : MonoBehaviour {
         {
             if (other.CompareTag("Eggplant") | other.CompareTag("Corn") | other.CompareTag("Pumpkin") | other.CompareTag("Tomato"))
             {
-                plant = other.gameObject;
+                seed = other.gameObject;
                 used = true;
+            } else
+            {
+                return;
             }
 
             if (other.CompareTag("Eggplant"))
