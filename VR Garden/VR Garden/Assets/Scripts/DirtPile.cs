@@ -25,11 +25,11 @@ public class DirtPile : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (!used)
         {
-            if (other.CompareTag("Eggplant") | other.CompareTag("Corn") | other.CompareTag("Pumpkin") | other.CompareTag("Tomato"))
+            if (other.gameObject.CompareTag("Eggplant") | other.gameObject.CompareTag("Corn") | other.gameObject.CompareTag("Pumpkin") | other.gameObject.CompareTag("Tomato"))
             {
                 other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 other.gameObject.transform.SetParent(transform);
@@ -40,16 +40,16 @@ public class DirtPile : MonoBehaviour {
                 return;
             }
 
-            if (other.CompareTag("Eggplant"))
+            if (other.gameObject.CompareTag("Eggplant"))
             {
                 produce = Produce.EGGPLANT;
-            } else if (other.CompareTag("Corn"))
+            } else if (other.gameObject.CompareTag("Corn"))
             {
                 produce = Produce.CORN;
-            } else if (other.CompareTag("Pumpkin"))
+            } else if (other.gameObject.CompareTag("Pumpkin"))
             {
                 produce = Produce.PUMPKIN;
-            } else if (other.CompareTag("Tomato"))
+            } else if (other.gameObject.CompareTag("Tomato"))
             {
                 produce = Produce.TOMATO;
             }
