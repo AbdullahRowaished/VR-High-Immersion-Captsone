@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Watering : MonoBehaviour {
-    private ParticleSystem waterPS;
+    private ParticleSystem waterPS, waterfillerPS;
     private int waterAmount;
 
     private void Start()
     {
         waterPS = GameObject.Find("Water Particles").GetComponent<ParticleSystem>();
+        waterfillerPS = GameObject.Find("WaterFiller Particles").GetComponent<ParticleSystem>();
         waterAmount = 500;
     }
 
@@ -28,7 +29,7 @@ public class Watering : MonoBehaviour {
             if (waterAmount < 500)
             {
                 waterAmount++;
-                waterPS.Emit(1);
+                waterfillerPS.Emit(1);
             }
         }
     }

@@ -76,7 +76,7 @@ public class Locomotion : MonoBehaviour
     private void HeightAdjustment()
     {
         CharacterController charControl = player.GetComponent<CharacterController>();
-        charControl.height = Vector3.Distance(vrcTransform.position, player.transform.position);
+        charControl.height = vrcTransform.position.y - player.transform.position.y;
         Vector3 newCenter = Vector3.zero;
         newCenter.y = (charControl.height / 2);
         newCenter.y += charControl.skinWidth;

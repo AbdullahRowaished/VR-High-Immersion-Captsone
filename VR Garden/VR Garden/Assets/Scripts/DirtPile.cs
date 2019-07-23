@@ -6,7 +6,7 @@ public class DirtPile : MonoBehaviour {
     public bool used = false;
     public GameObject seed = null;
     public Produce produce;
-    public int waterAmount;
+    public int waterAmount, maxWater;
 
 
     private List<ParticleCollisionEvent> pcEvents;
@@ -15,11 +15,12 @@ public class DirtPile : MonoBehaviour {
     {
         pcEvents = new List<ParticleCollisionEvent>();
         waterAmount = 0;
+        maxWater = 1000;
     }
 
     private void Update()
     {
-        if (waterAmount >= 10000)
+        if (waterAmount >= maxWater)
         {
             Debug.Log("plant has been watered");
         }
@@ -43,15 +44,19 @@ public class DirtPile : MonoBehaviour {
             if (other.gameObject.CompareTag("Eggplant"))
             {
                 produce = Produce.EGGPLANT;
+                maxWater = 250;
             } else if (other.gameObject.CompareTag("Corn"))
             {
                 produce = Produce.CORN;
+                maxWater = 350;
             } else if (other.gameObject.CompareTag("Pumpkin"))
             {
                 produce = Produce.PUMPKIN;
+                maxWater = 500;
             } else if (other.gameObject.CompareTag("Tomato"))
             {
                 produce = Produce.TOMATO;
+                maxWater = 100;
             }
         }
     }
@@ -66,7 +71,6 @@ public class DirtPile : MonoBehaviour {
             while (i < numCollisionEvents)
             {
                 waterAmount++;
-                Debug.Log("WaterAmount: " + waterAmount);
                 i++;
             }
         }
