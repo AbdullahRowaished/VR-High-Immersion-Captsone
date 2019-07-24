@@ -41,16 +41,16 @@ public class GamePools : MonoBehaviour {
             case "Dirt":
                 pool = dirtpiles;
                 break;
-            case "PumpkinPlant":
+            case "Pumpkin":
                 pool = pumpkins;
                 break;
-            case "EggplantPlant":
+            case "Eggplant":
                 pool = eggplants;
                 break;
-            case "TomatoPlant":
+            case "Tomato":
                 pool = tomatoes;
                 break;
-            case "CornPlant":
+            case "Corn":
                 pool = corn;
                 break;
         }
@@ -73,7 +73,7 @@ public class GamePools : MonoBehaviour {
         {
             pool.Add(Instantiate(pool[pool.Count - 1]));
             GameObject item = pool[pool.Count - 1];
-            item.name = tag + " " + pool.Count;
+            item.name = tag + " Plant " + pool.Count;
             item.transform.SetPositionAndRotation(coordinates, item.transform.rotation);
             item.transform.SetParent(GameObject.Find(tag).transform);
             item.SetActive(true);

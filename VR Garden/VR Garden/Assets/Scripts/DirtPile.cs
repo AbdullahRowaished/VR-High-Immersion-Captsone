@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DirtPile : MonoBehaviour {
-    public bool used = false;
+    public bool planted, sprouted;
     public GameObject seed = null;
     public Produce produce;
     public int waterAmount, maxWater;
+    private GameLogic gameLogic;
 
 
     private List<ParticleCollisionEvent> pcEvents;
@@ -16,26 +17,22 @@ public class DirtPile : MonoBehaviour {
         pcEvents = new List<ParticleCollisionEvent>();
         waterAmount = 0;
         maxWater = 1000;
-    }
-
-    private void Update()
-    {
-        if (waterAmount >= maxWater)
-        {
-            Debug.Log("plant has been watered");
-        }
+        gameLogic = GameObject.Find("GameLogic").GetComponent<GameLogic>();
+        sprouted = false;
+        planted = false;
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (!used)
+        if (!planted)
         {
             if (other.gameObject.CompareTag("Eggplant") | other.gameObject.CompareTag("Corn") | other.gameObject.CompareTag("Pumpkin") | other.gameObject.CompareTag("Tomato"))
             {
-                other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                other.gameObject.transform.SetParent(transform);
                 seed = other.gameObject;
-                used = true;
+                seed.GetComponent<Rigidbody>().isKinematic = true;
+                seed.transform.SetParent(transform);
+                seed.SetActive(false);
+                planted = true;
             } else
             {
                 return;
@@ -63,15 +60,21 @@ public class DirtPile : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("WaterCan"))
+        if (other.CompareTag("WaterCan") && !sprouted)
         {
             int numCollisionEvents = other.GetComponent<ParticleSystem>().GetCollisionEvents(gameObject, pcEvents);
             int i = 0;
 
-            while (i < numCollisionEvents)
+            while (i < numCollisionEvents && waterAmount < maxWater)
             {
                 waterAmount++;
                 i++;
+            }
+
+            if (waterAmount == maxWater && planted)
+            {
+                gameLogic.GrowCrops(transform.position, seed.tag);
+                sprouted = true;
             }
         }
     }

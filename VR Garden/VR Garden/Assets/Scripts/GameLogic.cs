@@ -21,21 +21,26 @@ public class GameLogic : MonoBehaviour {
         gamePools.PoolObject(pos, "Dirt");
     }
 
-    public void GrowCrops(Season season)
+    public GameObject GrowCrops(Vector3 coordinates, string tag)
     {
-        DirtPile pileScript;
-        foreach (GameObject pile in gamePools.dirtpiles)
+        int score = 0;
+        switch (tag)
         {
-            if (pile.activeSelf)
-            {
-                pileScript = pile.GetComponent<DirtPile>();
-                if (pileScript.used)
-                {
-                    gamePools.PoolObject(pile.transform.position, pileScript.seed.tag);
-                    pileScript.seed.SetActive(false);
-                }
-            }
+            case "Corn":
+                score = 50;
+                break;
+            case "Tomato":
+                score = 16;
+                break;
+            case "Eggplant":
+                score = 36;
+                break;
+            case "Pumpkin":
+                score = 80;
+                break;
         }
-        pileScript = null;
+
+        scoreboard.Score(score);
+        return gamePools.PoolObject(coordinates, tag);
     }
 }

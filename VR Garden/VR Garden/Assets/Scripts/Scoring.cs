@@ -1,28 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scoring : MonoBehaviour {
-    private int totalScore;
+    private int totalScore, tomatoes, corn, eggplants, pumpkins;
+    Text text;
 
     private void Start()
     {
-        totalScore = 0;
+        totalScore = tomatoes = corn = eggplants = pumpkins = 0;
+        text = GameObject.Find("ScoreMenu").GetComponent<Text>();
     }
 
-    public int Score(int score, Quality quality)
+    public int Score(int score)
     {
-        switch (quality)
+        switch (score)
         {
-            case Quality.LOW:
-                totalScore += score;
+            case 36:
+                eggplants += score;
                 break;
-            case Quality.HIGH:
-                totalScore += 5 * score;
+            case 50:
+                corn += score;
+                break;
+            case 16:
+                tomatoes += score;
+                break;
+            case 80:
+                pumpkins += score;
                 break;
         }
+        totalScore += score;
+        UpdateScores();
 
         return totalScore;
+    }
+
+    private void UpdateScores()
+    {
+        text.text = "Tomatoes :            " + tomatoes + "$\nEggplants:           " + eggplants + "$\nCorn:                     " + corn + "$\nPumpkins:             " + pumpkins + "$\n\n              ----\nTotal:        " + totalScore + "$";
+
     }
 
     public void ResetScore()
