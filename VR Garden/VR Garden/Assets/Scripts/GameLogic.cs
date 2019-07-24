@@ -21,16 +21,21 @@ public class GameLogic : MonoBehaviour {
         gamePools.PoolObject(pos, "Dirt");
     }
 
-    private void GrowCrops(Season season)
+    public void GrowCrops(Season season)
     {
+        DirtPile pileScript;
         foreach (GameObject pile in gamePools.dirtpiles)
         {
-            DirtPile pileScript = pile.GetComponent<DirtPile>();
-            if (pile.activeSelf && pileScript.used)
+            if (pile.activeSelf)
             {
-                gamePools.PoolObject(pile.transform.position, pileScript.seed.tag);
-                pileScript.seed.SetActive(false);
+                pileScript = pile.GetComponent<DirtPile>();
+                if (pileScript.used)
+                {
+                    gamePools.PoolObject(pile.transform.position, pileScript.seed.tag);
+                    pileScript.seed.SetActive(false);
+                }
             }
         }
+        pileScript = null;
     }
 }
