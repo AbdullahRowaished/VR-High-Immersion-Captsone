@@ -19,6 +19,7 @@ public class Locomotion : MonoBehaviour
         charControl = player.GetComponent<CharacterController>();
         locomotive = false;
         eyeing = false;
+        
     }
 
     private void Update()
@@ -64,6 +65,7 @@ public class Locomotion : MonoBehaviour
         Quaternion quat = Quaternion.Euler(euler);
 
         charControl.Move(quat * (new Vector3(xLS, 0, yLS) * t * speed));
+
     }
 
     private void RotateCamera()
